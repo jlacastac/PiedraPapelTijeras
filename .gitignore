@@ -1,3 +1,10 @@
-# Default ignored files
-/shelf/
+
+#Configuracion personal.
 /.idea/workspace.xml
+
+#Directorio donde se crean los ejecutables y etc.
+/target
+
+#Directorio para pruebas.
+/src/test
+

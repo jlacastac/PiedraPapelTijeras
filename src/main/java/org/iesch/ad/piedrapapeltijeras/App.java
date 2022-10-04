@@ -20,7 +20,7 @@ public class App {
     public static ResourceBundle recursos;
 
     static Juego juego;
-    static boolean fin;
+    static int jugadas;
 
     public static void main(String[] args) {
         new App();
@@ -34,7 +34,7 @@ public class App {
 
     private static void nuevoJuego(){
         Scanner in = new Scanner(System.in);
-        fin = false;
+        jugadas = 3;
 
         System.out.println(recursos.getString("selectDifficulty"));
         try {
@@ -51,18 +51,22 @@ public class App {
         } catch (Exception e) {
             nuevoJuego();
         }
+
+        System.out.println(recursos.getString("selectNumberOfPlays"));
+        jugadas = in.nextInt();
     }
 
     private static void jugar() {
         Scanner in = new Scanner(System.in);
 
-        while (!fin) {
+        while (jugadas > 0) {
             juego.jugar();
 
             System.out.println(recursos.getString("finishMatchQuestion"));
             if(in.next().toLowerCase().equals(SI)) {
-                fin = true;
+                return;
             }
+            jugadas--;
         }
     }
 
